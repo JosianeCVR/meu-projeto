@@ -1,0 +1,27 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checando código do repositório
+      uses: actions/checkout@v2
+
+    - name: Configurar o JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Você pode usar outra versão do Java se necessário
+
+    - name: Compilar o código
+      run: javac HelloWorld.java
+
+    - name: Rodar a aplicação
+      run: java HelloWorld
